@@ -1,0 +1,14 @@
+.cart-empty-container {
+  max-width: 100%;
+  margin: 0px auto;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px 20px;
+  margin: 20px 20px;
+
+  .empty-box-entity {
+    .empty-box-content {
+      padding: 30px 20px;
+    }
+  }
+}

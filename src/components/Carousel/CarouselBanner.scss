@@ -1,0 +1,16 @@
+.carousel-container {
+  margin: 0;
+  max-height: 400px;
+  border-radius: 15px;
+  padding: 10px 10px;
+
+  .scroll-img {
+    border-radius: 15px;
+
+    img {
+      object-fit: cover;
+      border-radius: 15px;
+      max-height: 350px;
+    }
+  }
+}

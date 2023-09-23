@@ -1,0 +1,31 @@
+.layout-admin {
+  .admin-header {
+    height: 65px;
+    border-bottom: 1px solid #ebebeb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background-color: bisque !important;
+  }
+
+  .admin-body {
+    margin: 15px;
+    display: flex;
+    min-height: auto;
+  }
+
+  .admin-footer {
+    height: 55px;
+    line-height: 55px;
+    align-items: center;
+    text-align: center;
+    padding: 0 10px;
+    position: absolute;
+    width: 100%;
+    background-color: aqua;
+
+    position: sticky;
+    //bottom: 0;
+  }
+}

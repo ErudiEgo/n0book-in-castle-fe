@@ -1,0 +1,69 @@
+.payment-page {
+  background-color: #efefef;
+  //padding: 20px 0;
+
+  .payment-container {
+    max-width: 1440px;
+    margin: 0px auto;
+
+    .table-show-deliver {
+      padding: 20px 20px;
+      margin: 20px 20px;
+      background-color: #fff;
+      border-radius: 15px;
+
+      .footer-table {
+        padding: 10px 0;
+
+        .footer-table-left {
+          font-size: 20px;
+          font-weight: 700;
+          text-align: center;
+        }
+        .footer-table-right {
+          color: #ee4d2d;
+          font-size: 20px;
+          font-weight: 700;
+          text-align: center;
+        }
+      }
+    }
+
+    .payment-infor-voucher {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px 40px;
+      margin: 20px 20px;
+
+      button {
+        width: 100%;
+        color: white;
+        font-weight: 600;
+        background-color: #fa842c;
+      }
+    }
+
+    .payment-infor-deliver {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px 40px;
+      margin: 20px 20px;
+
+      input {
+        margin: 5px auto;
+      }
+      label {
+        margin: 5px auto;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        font-weight: 600;
+        color: white;
+        background-color: #fa842c;
+      }
+    }
+  }
+}

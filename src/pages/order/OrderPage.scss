@@ -1,0 +1,25 @@
+.order-page {
+  background-color: #efefef;
+  padding: 10px 20px;
+
+  .order-container {
+    max-width: 1440px;
+    margin: 10px auto;
+
+    .order-steps {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px 20px;
+      margin: 0 20px;
+    }
+
+    .cart-btn-action-left {
+      text-align: left;
+      width: 100%;
+    }
+    .cart-btn-action-right {
+      text-align: right;
+      width: 100%;
+    }
+  }
+}
