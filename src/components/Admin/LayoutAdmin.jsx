@@ -77,7 +77,11 @@ const LayoutAdmin = () => {
 
   const itemsDropdown = [
     {
-      label: <label style={{ cursor: "pointer" }}>Quản lý tài khoản</label>,
+      label: (
+        <label onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+          Về trang chủ
+        </label>
+      ),
       key: "account",
     },
     {
@@ -138,8 +142,7 @@ const LayoutAdmin = () => {
           className="admin-footer"
           //style={{ padding: 0, position: "sticky", bottom: 0 }}
         >
-          Ant Design ©2023 Made with <HeartTwoTone /> || React Test Fresher
-          &copy; noMan-in-castle
+          Ant Design <HeartTwoTone /> || Book Castle ©2023
         </Footer>
       </Layout>
     </Layout>

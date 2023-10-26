@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { FilterTwoTone } from "@ant-design/icons";
 import {
   Row,
@@ -25,10 +25,12 @@ const Home = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
+  const [searchTerm, setSearchTerm] = useOutletContext();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [current, setCurrent] = useState(1);
-  const [pageSize, setPageSize] = useState(20);
+  const [pageSize, setPageSize] = useState(10);
   const [total, setTotal] = useState(0);
 
   const [filter, setFilter] = useState("");
@@ -55,7 +57,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchBook();
-  }, [current, pageSize, filter, sortQuery]);
+  }, [current, pageSize, filter, sortQuery, searchTerm]);
 
   const fetchBook = async () => {
     setIsLoading(true);
@@ -68,6 +70,9 @@ const Home = () => {
 
     if (sortQuery) {
       query += `&${sortQuery}`;
+    }
+    if (searchTerm) {
+      query += `&mainText=/${searchTerm}/i`;
     }
 
     const res = await callFetchlistBook(query);
@@ -277,7 +282,12 @@ const Home = () => {
                     <Rate
                       value={5}
                       disabled
-                      style={{ color: "#ffce3d", fontSize: 15 }}
+                      style={{ color: "#ffce3d", fontSize: 17 }}
+                    />
+                    <Rate
+                      value={3}
+                      disabled
+                      style={{ color: "#ffce3d", fontSize: 17 }}
                     />
                     <span className="ant-rate-text"></span>
                   </div>
@@ -290,7 +300,11 @@ const Home = () => {
                 type="primary"
                 shape="round"
                 icon={<FilterTwoTone />}
-                onClick={() => form.resetFields()}
+                onClick={() => {
+                  form.resetFields();
+                  setSearchTerm("");
+                  setFilter("");
+                }}
               >
                 Đặt lại bộ lọc
               </Button>

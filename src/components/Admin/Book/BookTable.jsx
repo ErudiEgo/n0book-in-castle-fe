@@ -259,14 +259,6 @@ const BookTable = () => {
           </Button>
 
           <Button
-            icon={<CloudUploadOutlined />}
-            type="primary"
-            onClick={() => setOpenModalImport(true)}
-          >
-            Import
-          </Button>
-
-          <Button
             icon={<ExportOutlined />}
             type="primary"
             onClick={() => handleExportData(listBook)}
@@ -345,14 +337,6 @@ const BookTable = () => {
         setOpenModalExport={setOpenModalExport}
         listBook={listBook}
       />
-      {/* 
-      
-      
-      <UserImport
-        openModalImport={openModalImport}
-        setOpenModalImport={setOpenModalImport}
-      />
-      */}
     </>
   );
 };

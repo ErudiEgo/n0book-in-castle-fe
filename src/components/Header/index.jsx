@@ -1,4 +1,5 @@
 import "./header.scss";
+import LogoIcon from "../../assets/Book-Castle-Logo.png";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
@@ -7,7 +8,6 @@ import { doLogoutAction } from "../../redux/account/accountSlice";
 
 import { FaReact } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
-import { VscSearchFuzzy } from "react-icons/vsc";
 
 import {
   Divider,
@@ -15,20 +15,20 @@ import {
   Drawer,
   message,
   Avatar,
-  Popconfirm,
   Popover,
-  Button,
+  Dropdown,
+  Space,
 } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-import { Dropdown, Space } from "antd";
+import { DownOutlined, SearchOutlined } from "@ant-design/icons";
 
 import { callLogout } from "../../services/api";
 
 import CartPreview from "../Cart/CartPreview";
 import UserInfo from "../AccountUser/UserInfo";
 import ManageAccount from "../AccountUser/ManageAccount";
+import Input from "antd/es/input/Input";
 
-const Header = () => {
+const Header = ({ searchTerm, setSearchTerm }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const isAuthenticated = useSelector((state) => state.account.isAuthenticated);
   const user = useSelector((state) => state.account.user);
@@ -111,13 +111,15 @@ const Header = () => {
             </div>
             <div className="page-header__logo">
               <span className="logo" onClick={() => goBackHome()}>
-                <FaReact className="rotate icon-react" /> noMan-in-castle
-                <VscSearchFuzzy className="icon-search" />
+                <img className="logo-web" src={LogoIcon} alt="Logo" />
               </span>
-              <input
+              <Input
                 className="input-search"
-                type={"text"}
-                placeholder="Bạn tìm gì hôm nay"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                size="middle"
+                placeholder="Bạn tìm gì hôm nay?"
+                prefix={<SearchOutlined style={{ color: "#61dafb" }} />}
               />
             </div>
           </div>

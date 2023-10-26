@@ -6,37 +6,25 @@ import { callFetchAccount } from "./services/api";
 import { useDispatch, useSelector } from "react-redux";
 import { doGetAccountAction } from "./redux/account/accountSlice";
 
-import UserTable from "./components/Admin/User/UserTable";
+import HomeLayout from "./components/HomeLayout/HomeLayout";
+
 import BookPage from "./pages/book";
 import ContactPage from "./pages/contact";
 import LoginPage from "./pages/login";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Home from "./components/Home";
 import RegisterPage from "./pages/register";
-
 import Loading from "./components/Loading";
 import NotFound from "./components/NotFound";
-import AdminPage from "./pages/admin";
 import ProtectedRoute from "./components/ProtectedRoute";
 import LayoutAdmin from "./components/Admin/LayoutAdmin";
-import BookTable from "./components/Admin/Book/BookTable";
-
+import DashBoard from "./components/Dashboard/DashBoard";
 import OrderPage from "./pages/order/OrderPage";
 import Payment from "./components/Order/Payment";
 import HistoryDeliver from "./pages/history/HistoryOrder";
 import OrderTable from "./components/Admin/Order/OrderTable";
-
-const Layout = () => {
-  return (
-    <div className="layout-app">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
-  );
-};
+import BookTable from "./components/Admin/Book/BookTable";
+import UserTable from "./components/Admin/User/UserTable";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -62,7 +50,7 @@ export default function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: <HomeLayout />,
       errorElement: <NotFound />,
       children: [
         { index: true, element: <Home /> },
@@ -76,7 +64,11 @@ export default function App() {
         },
         {
           path: "order",
-          element: <OrderPage />,
+          element: (
+            <ProtectedRoute>
+              <OrderPage />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "payment",
@@ -84,7 +76,11 @@ export default function App() {
         },
         {
           path: "history",
-          element: <HistoryDeliver />,
+          element: (
+            <ProtectedRoute>
+              <HistoryDeliver />
+            </ProtectedRoute>
+          ),
         },
       ],
     },
@@ -98,10 +94,11 @@ export default function App() {
           index: true,
           element: (
             <ProtectedRoute>
-              <AdminPage />
+              <DashBoard />
             </ProtectedRoute>
           ),
         },
+
         {
           path: "user",
           element: (

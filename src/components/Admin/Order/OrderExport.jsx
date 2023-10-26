@@ -21,17 +21,17 @@ import {
 } from "@ant-design/icons";
 
 const OrderExport = (props) => {
-  const { openModalExport, setOpenModalExport, listBook } = props;
+  const { openModalExport, setOpenModalExport, listOrder } = props;
 
   const [typeExport, setTypeExport] = useState(".csv");
-  const [tempList, setTempList] = useState(listBook);
+  const [tempList, setTempList] = useState(listOrder);
 
   const [pageSize, setPageSize] = useState(5);
   const [count, setCount] = useState(1);
 
   useEffect(() => {
-    setTempList(listBook);
-  }, [listBook]);
+    setTempList(listOrder);
+  }, [listOrder]);
 
   useEffect(() => {
     setPageSize(+tempList.length);
@@ -76,28 +76,28 @@ const OrderExport = (props) => {
       },
     },
     {
-      title: "Name's book",
-      dataIndex: "mainText",
-      align: "center",
+      title: "Name",
+      dataIndex: "name",
+      //align: "center",
     },
     {
-      title: "Author",
-      dataIndex: "author",
-      align: "center",
+      title: "Phone",
+      dataIndex: "phone",
+      //align: "center",
     },
     {
       title: "Price",
-      dataIndex: "price",
-      align: "center",
+      dataIndex: "totalPrice",
+      //align: "center",
     },
     {
-      title: "Sold",
-      dataIndex: "sold",
-      align: "center",
+      title: "Address",
+      dataIndex: "address",
+      //align: "center",
     },
     {
-      title: "Quantity",
-      dataIndex: "quantity",
+      title: "Type",
+      dataIndex: "type",
       align: "center",
     },
     {
@@ -117,8 +117,24 @@ const OrderExport = (props) => {
       },
     },
     {
+      title: "Created At",
+      dataIndex: "createdAt",
+      align: "center",
+      render: (text, record, index) => {
+        return (
+          <>
+            <div style={{ textAlign: "center", padding: "2px 0" }}>
+              <span>{moment(record?.updatedAt).format("DD-MM-YYYY")}</span>
+              <br />
+              <span>{moment(record?.updatedAt).format("hh:mm:ss")}</span>
+            </div>
+          </>
+        );
+      },
+    },
+    {
       title: "Action",
-      width: 90,
+      width: 100,
       render: (text, record, index) => {
         return (
           <>
@@ -177,7 +193,7 @@ const OrderExport = (props) => {
         onOk={() => handleExportData(tempList)}
         onCancel={() => {
           setOpenModalExport(false);
-          setTempList(listBook);
+          setTempList(listOrder);
           //setPageSize(tempList.length);
         }}
         okText="Export file"
@@ -217,7 +233,7 @@ const OrderExport = (props) => {
               <Button
                 style={{ margin: "0 8px" }}
                 onClick={() => {
-                  setTempList(listBook);
+                  setTempList(listOrder);
                   setPageSize(tempList.length);
                 }}
               >
@@ -233,7 +249,7 @@ const OrderExport = (props) => {
 
           <Table
             scroll={{
-              x: "80%vw",
+              x: "120%",
             }}
             dataSource={tempList}
             columns={columns}

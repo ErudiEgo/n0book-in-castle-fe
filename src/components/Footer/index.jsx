@@ -1,4 +1,5 @@
 import "./footer.scss";
+import Logo from "../../assets/Book-Castle-Logo.png";
 
 import { Col, Divider, Row, Space } from "antd";
 import {
@@ -18,7 +19,10 @@ const Footer = () => {
         <Row className="footer-top" gutter={24}>
           <Col span={18}>
             <div className="title-footer">
-              <span>Connected on social networks</span>
+              <b>
+                <img src={Logo} alt="Logo" width={25} height={17} />
+                &nbsp; Book Castle
+              </b>
             </div>
           </Col>
           <Col span={6}>
@@ -62,23 +66,28 @@ const Footer = () => {
           <Divider style={{ margin: 5 }} />
         </Row>
 
-        <div className="footer-middle">
+        <div
+          className="footer-middle"
+          style={{ fontFamily: "Montserrat, sans-serif" }}
+        >
           <Row gutter={24}>
-            <Col span={10}>
-              <h4 className="header-col">Corporation</h4>
+            <Col span={11}>
               <div className="cor-info">
-                <p>
-                  Lorem Ipsum chỉ đơn giản là một đoạn văn bản giả, được dùng
-                  vào việc trình bày và dàn trang phục vụ cho in ấn. Lorem Ipsum
-                  đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in
-                  ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn
-                  văn bản với nhau để tạo thành một bản mẫu văn bản.
+                <p style={{ lineHeight: 1.5, textAlign: "justify" }}>
+                  &nbsp; &nbsp;Đối với những người yêu sách trên khắp cả nước,
+                  thương hiệu sách Book Castle đã trở thành cái tên quen thuộc.
+                  Book Castle là điểm đến yêu thích của nhiều người yêu con chữ
+                  bởi nơi đây có hầu hết mọi loại sách cần thiết như sách thiếu
+                  nhi, sách văn học trong và ngoài nước, sách khoa học, sách
+                  giáo khoa... Chúng tôi luôn nỗ lực để tạo điểm nhấn số 1 trong
+                  tâm trí khách hàng về trải nghiệm giải trí, khám phá, văn hóa
+                  và lễ hội.
                 </p>
               </div>
             </Col>
 
             <Col span={2}></Col>
-            <Col span={4}>
+            <Col span={3}>
               <h4 className="header-col">TRANG KHÁC</h4>
               <div className="site-info">
                 <p>
@@ -109,7 +118,7 @@ const Footer = () => {
               <div className="contact-info">
                 <p>
                   <HomeOutlined className="me-4" />
-                  &nbsp; &nbsp; TP.Hà Nội
+                  &nbsp; &nbsp; Hà Nội, Việt Name
                 </p>
                 <p>
                   <MailOutlined className="me-4" />
@@ -123,7 +132,9 @@ const Footer = () => {
             </Col>
           </Row>
         </div>
-        <div className="footer-bottom">React &copy; by n0man-in-castle ||</div>
+        <div className="footer-bottom">
+          Copyright &copy; 2022 || Book Castle React
+        </div>
       </footer>
     </>
   );

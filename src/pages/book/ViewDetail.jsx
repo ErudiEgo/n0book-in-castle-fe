@@ -3,7 +3,7 @@ import "./book.scss";
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { Row, Col, Rate, Divider, Button, Spin } from "antd";
+import { Row, Col, Rate, Divider, Button, Spin, Space, Alert } from "antd";
 import ImageGallery from "react-image-gallery";
 
 import ModalGallery from "./ModalGallery";
@@ -13,6 +13,8 @@ import BookLoader from "./BookLoader";
 import { doAddBookAction } from "../../redux/order/orderSlice";
 import { useNavigate } from "react-router-dom";
 import CarouselProduct from "../../components/Carousel/CarouselProduct";
+import Empty from "../../components/Empty-Entity/Empty";
+
 import { useEffect } from "react";
 
 const ViewDetail = (props) => {
@@ -187,6 +189,21 @@ const ViewDetail = (props) => {
             )}
           </div>
           <div className="slider-book-box">
+            <Space
+              direction="vertical"
+              style={{
+                width: "100%",
+              }}
+            >
+              <Alert
+                message={<h4>CHI TIẾT SẢN PHẨM: </h4>}
+                description={<Empty></Empty>}
+                type="info"
+              />
+            </Space>
+          </div>
+          <Divider />
+          <div className="slider-book-box">
             <Row gutter={24}>
               <Col span={24}>
                 <CarouselProduct
@@ -198,6 +215,7 @@ const ViewDetail = (props) => {
               </Col>
             </Row>
           </div>
+
           <div className="slider-book-box">
             <Row gutter={24}>
               <Col span={24}>

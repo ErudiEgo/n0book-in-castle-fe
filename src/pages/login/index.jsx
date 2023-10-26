@@ -1,4 +1,14 @@
-import { Button, Divider, Form, Input, message, notification } from "antd";
+import LogoWeb from "../../assets/Book-Castle-Logo.png";
+import {
+  Button,
+  Col,
+  Divider,
+  Form,
+  Input,
+  Row,
+  message,
+  notification,
+} from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { callLogin } from "../../services/api";
 import "./login.scss";
@@ -51,75 +61,89 @@ const LoginPage = () => {
   return (
     <div className="login-page">
       <main className="main">
-        <div className="container">
-          <section className="wrapper" style={{ width: "520px" }}>
-            <div className="heading">
-              <h2 className="text text-large" style={{ textAlign: "center" }}>
-                Đăng nhập
-              </h2>
-              <Divider />
-            </div>
-            <Form
-              name="basic"
-              style={{ maxWidth: 600, margin: "0 auto" }}
-              onFinish={onFinish}
-              autoComplete="off"
-            >
-              <Form.Item
-                labelCol={{ span: 5 }}
-                wrapperCol={{ span: 19 }}
-                label="Email"
-                name="username"
-                rules={[
-                  { required: true, message: "Email không được để trống!" },
-                ]}
-              >
-                <Input
-                  prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="Your email here...."
-                />
-              </Form.Item>
-
-              <Form.Item
-                labelCol={{ span: 5 }}
-                wrapperCol={{ span: 19 }}
-                label="Mật khẩu"
-                name="password"
-                rules={[
-                  { required: true, message: "Mật khẩu không được để trống!" },
-                ]}
-              >
-                <Input.Password
-                  prefix={<LockOutlined className="site-form-item-icon" />}
-                  placeholder="Your password here...."
-                />
-              </Form.Item>
-
-              <Form.Item
-                className="btn-login-btn"
-                // wrapperCol={{ offset: 6, span: 16 }}
-              >
-                <Button
-                  type="primary"
-                  style={{ width: "100%" }}
-                  htmlType="submit"
-                  loading={isSubmit}
+        <div className="container" style={{ width: "100vw" }}>
+          <section className="wrapper">
+            <Row>
+              <Col span={12}>
+                <div className="heading">
+                  <h2
+                    className="text text-large"
+                    style={{ textAlign: "center" }}
+                  >
+                    Đăng nhập
+                  </h2>
+                  <Divider />
+                </div>
+                <Form
+                  name="basic"
+                  style={{ maxWidth: 600, margin: "0 auto" }}
+                  onFinish={onFinish}
+                  autoComplete="off"
                 >
-                  Đăng nhập
-                </Button>
-              </Form.Item>
-              <Divider>Or</Divider>
-              <p className="text text-normal">
-                Chưa có tài khoản ?
-                <span>
-                  <Link to="/register"> Đăng ký </Link>
-                </span>
-                hoặc
-                <span>
-                  <Link to="/"> Trở lại trang chủ </Link>
-                </span>
-              </p>
-            </Form>
+                  <Form.Item
+                    labelCol={{ span: 5 }}
+                    wrapperCol={{ span: 19 }}
+                    label="Email"
+                    name="username"
+                    rules={[
+                      { required: true, message: "Email không được để trống!" },
+                    ]}
+                  >
+                    <Input
+                      prefix={<UserOutlined className="site-form-item-icon" />}
+                      placeholder="Your email here...."
+                    />
+                  </Form.Item>
+
+                  <Form.Item
+                    labelCol={{ span: 5 }}
+                    wrapperCol={{ span: 19 }}
+                    label="Mật khẩu"
+                    name="password"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Mật khẩu không được để trống!",
+                      },
+                    ]}
+                  >
+                    <Input.Password
+                      prefix={<LockOutlined className="site-form-item-icon" />}
+                      placeholder="Your password here...."
+                    />
+                  </Form.Item>
+
+                  <Form.Item
+                    className="btn-login-btn"
+                    // wrapperCol={{ offset: 6, span: 16 }}
+                  >
+                    <Button
+                      size="large"
+                      type="primary"
+                      style={{ width: "100%" }}
+                      htmlType="submit"
+                      loading={isSubmit}
+                    >
+                      Đăng nhập
+                    </Button>
+                  </Form.Item>
+                  <Divider>Or</Divider>
+                  <p className="text text-normal">
+                    Chưa có tài khoản ?
+                    <span>
+                      <Link to="/register"> Đăng ký </Link>
+                    </span>
+                    hoặc
+                    <span>
+                      <Link to="/"> Trở lại trang chủ </Link>
+                    </span>
+                  </p>
+                </Form>
+              </Col>
+              <Col className="container-logo" span={12}>
+                <img src={LogoWeb} className="img-logo" alt="logo"></img>
+              </Col>
+            </Row>
           </section>
         </div>
       </main>

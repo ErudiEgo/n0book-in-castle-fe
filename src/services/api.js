@@ -112,10 +112,10 @@ export const callChangePassword = (email, oldpass, newpass) => {
   });
 };
 
-export const callFetchlistOrder = (email, oldpass, newpass) => {
-  return axios.post(`/api/v1/user/change-password`, {
-    email,
-    oldpass,
-    newpass,
-  });
+export const callFetchListOrder = (query) => {
+  return axios.get(`api/v1/order?${query}`);
+};
+
+export const callFetchDashboard = () => {
+  return axios.get(`/api/v1/database/dashboard`);
 };
